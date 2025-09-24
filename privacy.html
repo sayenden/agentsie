@@ -1,145 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Privacy Policy — Agentsie.io</title>
-  <meta name="description" content="Privacy Policy for Agentsie.io - Your AI agent for maximizing credit card rewards" />
-  <link rel="icon" href="/assets/favicon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>.container-narrow{max-width:800px}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentsie — AI Workforce Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{{--accent:#60A5FA;--mint:#34D399}}
+    body{{font-family:Inter,sans-serif}}
+    .btn{{display:inline-block;border-radius:0.75rem;padding:.65rem 1rem}}
+    .btn-primary{{background:#111;color:#fff}}
+    .btn-outline{{border:1px solid #e5e7eb}}
+    .kpi{{border:1px solid #e5e7eb;border-radius:0.75rem;padding:1rem}}
+    .hero{{background: radial-gradient(900px 400px at 20% -10%, rgba(52,211,153,.18), transparent 55%), radial-gradient(600px 300px at 120% 0%, rgba(96,165,250,.18), transparent 55%), linear-gradient(#fff,#f8fafc)}}
+    .pill{{border:1px solid #e5e7eb;border-radius:9999px;padding:.25rem .6rem;font-size:.75rem;color:#374151}}
+  </style>
+  <script>
+    // Simple demo engine (used on demo.html & dashboard preview)
+    function fmt(n){{return n.toLocaleString()}}
+    function tickKPI(id, type){{const el=document.getElementById(id); if(!el) return;
+      const base=parseFloat(el.dataset.base||"0"); const dir=Math.random()>.4?1:-1; const delta=base*(Math.random()*.02+.005)*dir;
+      const next=Math.max(0, base+delta); el.dataset.base=next.toFixed(2);
+      if(type==='money') el.textContent="$"+fmt(Math.round(next));
+      if(type==='ratio') el.textContent=(next).toFixed(1)+"×";
+      if(type==='int') el.textContent=fmt(Math.round(next));
+      const d=el.parentElement.querySelector('.delta'); if(d){{d.textContent=((dir>0?'+':'')+(Math.abs(delta)/base*100).toFixed(1)+'%'); d.className='text-xs delta '+(dir>0?'text-green-600':'text-red-600')}}
+    }}
+    function startDemo(){{
+      if(window.__demo) clearInterval(window.__demo);
+      tickKPI('kpi_rev','money'); tickKPI('kpi_roi','ratio'); tickKPI('kpi_new','int');
+      window.__demo=setInterval(()=>{{ tickKPI('kpi_rev','money'); tickKPI('kpi_roi','ratio'); tickKPI('kpi_new','int'); }},1200);
+      const b=document.getElementById('run-demo'); if(b){{b.textContent='Live Demo Running…'; b.disabled=true; b.classList.add('opacity-70')}}
+    }}
+  </script>
 </head>
-<body class="bg-white text-slate-900 antialiased">
-  <!-- Nav -->
-  <header class="bg-white border-b border-slate-200">
-    <div class="mx-auto container-narrow px-6 py-4 flex items-center justify-between">
-      <a href="https://agentsie.io" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <img src="/assets/favicon.png" class="w-8 h-8 rounded-lg" alt="Agentsie logo" />
-        <span class="text-xl font-bold">Agentsie<span class="text-teal-600">.io</span></span>
-      </a>
-      <a href="/index.html" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-colors">
-        Back to Home
-      </a>
+<body class='bg-gray-50'>
+<header class="border-b bg-white/80 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-black rounded-full"></div>
+      <span class="font-bold text-lg">Agentsie</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="use-cases.html" class="text-gray-600 hover:text-gray-900">Use Cases</a>
+      <a href="how-it-works.html" class="text-gray-600 hover:text-gray-900">How It Works</a>
+      <a href="pricing.html" class="text-gray-600 hover:text-gray-900">Pricing</a>
+      <a href="integrations.html" class="text-gray-600 hover:text-gray-900">Integrations</a>
+      <a href="security.html" class="text-gray-600 hover:text-gray-900">Security</a>
+      <a href="developer.html" class="text-gray-600 hover:text-gray-900">Developers</a>
+      <a href="demo.html" class="text-gray-600 hover:text-gray-900">Live Demo</a>
+      <a href="blog.html" class="text-gray-600 hover:text-gray-900">Resources</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#" class="text-sm text-gray-600 hover:text-gray-900">Sign in</a>
+      <a href="pricing.html" class="btn btn-primary">Start free</a>
     </div>
-  </header>
-
-  <main class="py-16">
-    <div class="mx-auto container-narrow px-6">
-      <h1 class="text-4xl font-bold mb-8">Privacy Policy</h1>
-      <p class="text-slate-600 mb-8">Last updated: September 23, 2025</p>
-
-      <div class="prose prose-slate max-w-none">
-        <h2 class="text-2xl font-bold mt-8 mb-4">Introduction</h2>
-        <p class="mb-6">
-          At Agentsie.io ("we," "our," or "us"), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our credit card rewards optimization service.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Information We Collect</h2>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">Personal Information</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Email address for account creation and communication</li>
-          <li>Name and contact information you provide</li>
-          <li>Account preferences and settings</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold mt-6 mb-3">Financial Information</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Credit card transaction history (read-only access via Plaid)</li>
-          <li>Card details and benefits information</li>
-          <li>Spending patterns and merchant categories</li>
-          <li>Rewards earning history</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold mt-6 mb-3">Technical Information</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Device information and browser type</li>
-          <li>IP address and location data</li>
-          <li>Usage analytics and service interactions</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">How We Use Your Information</h2>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Analyze your spending patterns to optimize credit card rewards</li>
-          <li>Provide personalized recommendations and insights</li>
-          <li>Generate monthly optimization reports</li>
-          <li>Communicate service updates and important notifications</li>
-          <li>Improve our AI algorithms and service quality</li>
-          <li>Ensure security and prevent fraud</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Data Security</h2>
-        <p class="mb-4">We implement industry-standard security measures to protect your information:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li><strong>Bank-grade encryption:</strong> All data is encrypted in transit and at rest</li>
-          <li><strong>Read-only access:</strong> We never store passwords or account credentials</li>
-          <li><strong>Secure connections:</strong> All financial data access is through Plaid's secure API</li>
-          <li><strong>Limited access:</strong> Only authorized personnel can access your data</li>
-          <li><strong>Regular audits:</strong> We conduct regular security assessments</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Information Sharing</h2>
-        <p class="mb-4">We do not sell, trade, or rent your personal information. We may share information only in these limited circumstances:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>With trusted service providers (like Plaid) who assist in our operations</li>
-          <li>When required by law or to protect our legal rights</li>
-          <li>In connection with a business transfer or acquisition</li>
-          <li>With your explicit consent</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Your Rights</h2>
-        <p class="mb-4">You have the right to:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Access and review your personal information</li>
-          <li>Request corrections to inaccurate data</li>
-          <li>Delete your account and associated data</li>
-          <li>Opt-out of marketing communications</li>
-          <li>Export your data in a portable format</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Data Retention</h2>
-        <p class="mb-6">
-          We retain your information only as long as necessary to provide our services and comply with legal obligations. You can request deletion of your account and data at any time through your account settings or by contacting us.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Cookies and Tracking</h2>
-        <p class="mb-6">
-          We use essential cookies to provide our service and analytics cookies to improve user experience. You can control cookie preferences through your browser settings.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Changes to This Policy</h2>
-        <p class="mb-6">
-          We may update this Privacy Policy periodically. We will notify you of significant changes via email or through our service. Your continued use of our service after changes constitutes acceptance of the updated policy.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Contact Us</h2>
-        <p class="mb-6">
-          If you have questions about this Privacy Policy or our data practices, please contact us:
-        </p>
-        <div class="bg-slate-50 p-6 rounded-lg">
-          <p><strong>Email:</strong> privacy@agentsie.io</p>
-          <p><strong>Address:</strong> Agentsie.io Privacy Team</p>
-          <p>We will respond to privacy inquiries within 30 days.</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="py-8 text-sm text-slate-600 border-t border-slate-200 bg-slate-50">
-    <div class="mx-auto container-narrow px-6 text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <img src="/assets/favicon.png" class="w-5 h-5 rounded" alt="Agentsie logo" />
-        <span>© <span id="y"></span> Agentsie.io</span>
-      </div>
-      <div class="flex items-center justify-center gap-6">
-        <a href="/index.html" class="hover:text-slate-900">Home</a>
-        <a href="/privacy.html" class="hover:text-slate-900">Privacy</a>
-        <a href="/terms.html" class="hover:text-slate-900">Terms</a>
-        <a href="/contact.html" class="hover:text-slate-900">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-</body>
-</html>
+  </div>
+</header>
+<section class='max-w-7xl mx-auto px-4 py-12'><h1 class='text-3xl font-bold'>Privacy Policy</h1><div class='mt-3 text-gray-700'><p>What we collect, how we use it, and your rights.</p></div></section>
+<footer class="border-t mt-20">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+    <div><div class="w-8 h-8 bg-black rounded-full mb-3"></div><p class="text-gray-600">Hire a digital C‑suite in minutes.</p></div>
+    <div><h4 class="font-semibold mb-2">Product</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="demo.html">Live Demo</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="map.html">Map</a></li></ul></div>
+    <div><h4 class="font-semibold mb-2">Company</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="case-studies.html">Case Studies</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="font-semibold mb-2">Legal</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
+  </div>
+  <div class="text-center text-xs text-gray-500 pb-8">© 2025 Agentsie</div>
+</footer>
+</body></html>

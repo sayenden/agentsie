@@ -37,7 +37,9 @@
     }}
   </script>
 </head>
-<body class='bg-gray-50'>
+
+<body class="bg-gray-50">
+
 <header class="border-b bg-white/80 backdrop-blur sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
     <a href="index.html" class="flex items-center gap-2">
@@ -60,26 +62,17 @@
     </div>
   </div>
 </header>
-<section class='max-w-7xl mx-auto px-4 py-12'><h1 class='text-3xl font-bold'>Contact Sales</h1><div class='mt-3 text-gray-700'><p>Tell us about your goals. We’ll tailor a demo to your stack.</p></div></section>
 
-<section class="bg-white py-10">
-  <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-6 items-center">
-    <div class="text-center text-sm text-gray-500">SOC2-Ready</div>
-    <div class="text-center text-sm text-gray-500">SSO/SAML</div>
-    <div class="text-center text-sm text-gray-500">RBAC</div>
-    <div class="text-center text-sm text-gray-500">Signed Webhooks</div>
-    <div class="text-center text-sm text-gray-500">Audit Logs</div>
+<section class="max-w-7xl mx-auto px-4 py-12">
+  <div class="flex items-center justify-between">
+    <h1 class="text-3xl font-bold">Live Demo</h1>
+    <button id="run-demo" onclick="startDemo()" class="btn btn-outline">Run Live Demo</button>
   </div>
-</section>
-
-
-<section class="bg-black text-white py-6">
-  <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3">
-    <div class="text-sm md:text-base">Ready to see agents move real numbers? Run the live demo or schedule a 1:1.</div>
-    <div class="flex gap-2">
-      <a href="demo.html" class="btn btn-outline bg-white text-black">Run Live Demo</a>
-      <a href="book-demo.html" class="btn btn-primary">Schedule 1:1</a>
-    </div>
+  <p class="text-gray-600 mt-2">Personalize the snapshot and watch KPIs move in real-time.</p>
+  <div class="mt-6 grid md:grid-cols-3 gap-4">
+    <div class="kpi"><div class="text-xs text-gray-500">Monthly Revenue</div><div id="kpi_rev" data-base="18200" class="text-2xl font-bold">$18,200</div><div class="text-xs delta text-green-600">+12%</div></div>
+    <div class="kpi"><div class="text-xs text-gray-500">Marketing ROI</div><div id="kpi_roi" data-base="4.6" class="text-2xl font-bold">4.6×</div><div class="text-xs delta text-green-600">+0.8%</div></div>
+    <div class="kpi"><div class="text-xs text-gray-500">New Customers</div><div id="kpi_new" data-base="18" class="text-2xl font-bold">+18</div><div class="text-xs delta text-green-600">+22%</div></div>
   </div>
 </section>
 
@@ -94,7 +87,6 @@
       <li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
   </div>
   <div class="text-center text-xs text-gray-500 pb-8">© 2025 Agentsie</div>
-<div class="max-w-3xl mx-auto px-4"><div id="ml-embed" class="mt-6"></div></div>
-<script src="assets/mailer-embed.js"></script>
 </footer>
+
 </body></html>

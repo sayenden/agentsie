@@ -1,176 +1,76 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terms of Service — Agentsie.io</title>
-  <meta name="description" content="Terms of Service for Agentsie.io - Your AI agent for maximizing credit card rewards" />
-  <link rel="icon" href="/assets/favicon.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>.container-narrow{max-width:800px}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentsie — AI Workforce Platform</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{{--accent:#60A5FA;--mint:#34D399}}
+    body{{font-family:Inter,sans-serif}}
+    .btn{{display:inline-block;border-radius:0.75rem;padding:.65rem 1rem}}
+    .btn-primary{{background:#111;color:#fff}}
+    .btn-outline{{border:1px solid #e5e7eb}}
+    .kpi{{border:1px solid #e5e7eb;border-radius:0.75rem;padding:1rem}}
+    .hero{{background: radial-gradient(900px 400px at 20% -10%, rgba(52,211,153,.18), transparent 55%), radial-gradient(600px 300px at 120% 0%, rgba(96,165,250,.18), transparent 55%), linear-gradient(#fff,#f8fafc)}}
+    .pill{{border:1px solid #e5e7eb;border-radius:9999px;padding:.25rem .6rem;font-size:.75rem;color:#374151}}
+  </style>
+  <script>
+    // Simple demo engine (used on demo.html & dashboard preview)
+    function fmt(n){{return n.toLocaleString()}}
+    function tickKPI(id, type){{const el=document.getElementById(id); if(!el) return;
+      const base=parseFloat(el.dataset.base||"0"); const dir=Math.random()>.4?1:-1; const delta=base*(Math.random()*.02+.005)*dir;
+      const next=Math.max(0, base+delta); el.dataset.base=next.toFixed(2);
+      if(type==='money') el.textContent="$"+fmt(Math.round(next));
+      if(type==='ratio') el.textContent=(next).toFixed(1)+"×";
+      if(type==='int') el.textContent=fmt(Math.round(next));
+      const d=el.parentElement.querySelector('.delta'); if(d){{d.textContent=((dir>0?'+':'')+(Math.abs(delta)/base*100).toFixed(1)+'%'); d.className='text-xs delta '+(dir>0?'text-green-600':'text-red-600')}}
+    }}
+    function startDemo(){{
+      if(window.__demo) clearInterval(window.__demo);
+      tickKPI('kpi_rev','money'); tickKPI('kpi_roi','ratio'); tickKPI('kpi_new','int');
+      window.__demo=setInterval(()=>{{ tickKPI('kpi_rev','money'); tickKPI('kpi_roi','ratio'); tickKPI('kpi_new','int'); }},1200);
+      const b=document.getElementById('run-demo'); if(b){{b.textContent='Live Demo Running…'; b.disabled=true; b.classList.add('opacity-70')}}
+    }}
+  </script>
 </head>
-<body class="bg-white text-slate-900 antialiased">
-  <!-- Nav -->
-  <header class="bg-white border-b border-slate-200">
-    <div class="mx-auto container-narrow px-6 py-4 flex items-center justify-between">
-      <a href="https://agentsie.io" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <img src="/assets/favicon.png" class="w-8 h-8 rounded-lg" alt="Agentsie logo" />
-        <span class="text-xl font-bold">Agentsie<span class="text-teal-600">.io</span></span>
-      </a>
-      <a href="/index.html" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-colors">
-        Back to Home
-      </a>
+<body class='bg-gray-50'>
+<header class="border-b bg-white/80 backdrop-blur sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-black rounded-full"></div>
+      <span class="font-bold text-lg">Agentsie</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="use-cases.html" class="text-gray-600 hover:text-gray-900">Use Cases</a>
+      <a href="how-it-works.html" class="text-gray-600 hover:text-gray-900">How It Works</a>
+      <a href="pricing.html" class="text-gray-600 hover:text-gray-900">Pricing</a>
+      <a href="integrations.html" class="text-gray-600 hover:text-gray-900">Integrations</a>
+      <a href="security.html" class="text-gray-600 hover:text-gray-900">Security</a>
+      <a href="developer.html" class="text-gray-600 hover:text-gray-900">Developers</a>
+      <a href="demo.html" class="text-gray-600 hover:text-gray-900">Live Demo</a>
+      <a href="blog.html" class="text-gray-600 hover:text-gray-900">Resources</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#" class="text-sm text-gray-600 hover:text-gray-900">Sign in</a>
+      <a href="pricing.html" class="btn btn-primary">Start free</a>
     </div>
-  </header>
-
-  <main class="py-16">
-    <div class="mx-auto container-narrow px-6">
-      <h1 class="text-4xl font-bold mb-8">Terms of Service</h1>
-      <p class="text-slate-600 mb-8">Last updated: September 23, 2025</p>
-
-      <div class="prose prose-slate max-w-none">
-        <h2 class="text-2xl font-bold mt-8 mb-4">Agreement to Terms</h2>
-        <p class="mb-6">
-          By accessing and using Agentsie.io ("Service"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access the Service.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Description of Service</h2>
-        <p class="mb-6">
-          Agentsie.io is an AI-powered credit card rewards optimization service that analyzes your spending patterns and provides recommendations to maximize your credit card rewards earnings. Our service includes:
-        </p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Transaction analysis and spending pattern recognition</li>
-          <li>Credit card rewards optimization recommendations</li>
-          <li>Monthly reports on missed rewards opportunities</li>
-          <li>Alerts for category activations and new card opportunities</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">User Accounts</h2>
-        <h3 class="text-xl font-semibold mt-6 mb-3">Account Creation</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>You must provide accurate and complete information when creating an account</li>
-          <li>You are responsible for maintaining the security of your account credentials</li>
-          <li>You must be at least 18 years old to use our Service</li>
-          <li>One account per person; multiple accounts are not permitted</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold mt-6 mb-3">Account Responsibilities</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>You are responsible for all activities under your account</li>
-          <li>Notify us immediately of any unauthorized access</li>
-          <li>Keep your contact information current and accurate</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Financial Data Access</h2>
-        <p class="mb-4">By using our Service, you authorize us to:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Access your credit card transaction history through secure, read-only connections</li>
-          <li>Analyze your spending patterns and merchant categories</li>
-          <li>Store transaction data necessary for providing optimization recommendations</li>
-          <li>Use aggregated, anonymized data to improve our AI algorithms</li>
-        </ul>
-
-        <p class="mb-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-          <strong>Important:</strong> We never access account numbers, passwords, or have the ability to initiate transactions. All financial data access is read-only through trusted providers like Plaid.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Acceptable Use</h2>
-        <p class="mb-4">You agree not to:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Use the Service for any illegal or unauthorized purpose</li>
-          <li>Attempt to gain unauthorized access to our systems</li>
-          <li>Share your account credentials with others</li>
-          <li>Use automated tools to access the Service without permission</li>
-          <li>Interfere with or disrupt the Service or servers</li>
-          <li>Provide false or misleading information</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Service Availability</h2>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>We strive to maintain high service availability but cannot guarantee 100% uptime</li>
-          <li>We may temporarily suspend the Service for maintenance or updates</li>
-          <li>We reserve the right to modify or discontinue features with reasonable notice</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Disclaimers and Limitations</h2>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">Service Disclaimers</h3>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Our recommendations are based on available data and AI analysis</li>
-          <li>We do not guarantee specific rewards earnings or savings amounts</li>
-          <li>Credit card terms and benefits may change without notice</li>
-          <li>You are responsible for verifying all recommendations before acting</li>
-        </ul>
-
-        <h3 class="text-xl font-semibold mt-6 mb-3">Limitation of Liability</h3>
-        <p class="mb-6">
-          To the maximum extent permitted by law, Agentsie.io shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or other intangible losses resulting from your use of the Service.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Subscription and Billing</h2>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Subscription fees are billed in advance on a recurring basis</li>
-          <li>You may cancel your subscription at any time through your account settings</li>
-          <li>Refunds are provided according to our refund policy</li>
-          <li>We reserve the right to change pricing with 30 days notice</li>
-        </ul>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Intellectual Property</h2>
-        <p class="mb-6">
-          The Service and its original content, features, and functionality are owned by Agentsie.io and are protected by international copyright, trademark, patent, trade secret, and other intellectual property laws.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Termination</h2>
-        <p class="mb-4">We may terminate or suspend your account and access to the Service immediately if you:</p>
-        <ul class="list-disc pl-6 mb-6 space-y-2">
-          <li>Breach these Terms of Service</li>
-          <li>Engage in fraudulent or illegal activities</li>
-          <li>Violate our Acceptable Use policy</li>
-          <li>Fail to pay subscription fees</li>
-        </ul>
-
-        <p class="mb-6">
-          Upon termination, your right to use the Service will cease immediately, and we will delete your account data according to our data retention policy.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Governing Law</h2>
-        <p class="mb-6">
-          These Terms shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of law provisions. Any disputes arising from these Terms will be resolved through binding arbitration.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Changes to Terms</h2>
-        <p class="mb-6">
-          We reserve the right to modify these Terms at any time. We will notify users of significant changes via email or through the Service. Your continued use of the Service after changes constitutes acceptance of the new Terms.
-        </p>
-
-        <h2 class="text-2xl font-bold mt-8 mb-4">Contact Information</h2>
-        <p class="mb-6">
-          If you have questions about these Terms of Service, please contact us:
-        </p>
-        <div class="bg-slate-50 p-6 rounded-lg">
-          <p><strong>Email:</strong> legal@agentsie.io</p>
-          <p><strong>Address:</strong> Agentsie.io Legal Team</p>
-          <p>We will respond to legal inquiries within 5 business days.</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer class="py-8 text-sm text-slate-600 border-t border-slate-200 bg-slate-50">
-    <div class="mx-auto container-narrow px-6 text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <img src="/assets/favicon.png" class="w-5 h-5 rounded" alt="Agentsie logo" />
-        <span>© <span id="y"></span> Agentsie.io</span>
-      </div>
-      <div class="flex items-center justify-center gap-6">
-        <a href="/index.html" class="hover:text-slate-900">Home</a>
-        <a href="/privacy.html" class="hover:text-slate-900">Privacy</a>
-        <a href="/terms.html" class="hover:text-slate-900">Terms</a>
-        <a href="/contact.html" class="hover:text-slate-900">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-</body>
-</html>
+  </div>
+</header>
+<section class='max-w-7xl mx-auto px-4 py-12'><h1 class='text-3xl font-bold'>Terms of Service</h1><div class='mt-3 text-gray-700'><p>Usage, billing, liability.</p></div></section>
+<footer class="border-t mt-20">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+    <div><div class="w-8 h-8 bg-black rounded-full mb-3"></div><p class="text-gray-600">Hire a digital C‑suite in minutes.</p></div>
+    <div><h4 class="font-semibold mb-2">Product</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="demo.html">Live Demo</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="map.html">Map</a></li></ul></div>
+    <div><h4 class="font-semibold mb-2">Company</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="case-studies.html">Case Studies</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="font-semibold mb-2">Legal</h4><ul class="space-y-2 text-gray-600">
+      <li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li></ul></div>
+  </div>
+  <div class="text-center text-xs text-gray-500 pb-8">© 2025 Agentsie</div>
+</footer>
+</body></html>
